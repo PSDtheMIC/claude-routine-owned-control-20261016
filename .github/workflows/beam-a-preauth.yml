@@ -1,0 +1,22 @@
+name: Beam A preauth control
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  a_preauth:
+    if: >-
+      github.event.issue.pull_request != null &&
+      github.actor == 'PSDtheMIC' &&
+      contains(github.event.comment.body, '@claude beam-a-preauth-g5w1')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout owned baseline
+        uses: actions/checkout@v4
+      - name: Run pinned Claude Code Action without a model credential
+        uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9
