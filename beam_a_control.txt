@@ -1,0 +1,2 @@
+A-owned harmless PR fixture for the generation-5 preauth Action control.
+No hooks, model instructions, credentials, or workflows are added on this branch.
